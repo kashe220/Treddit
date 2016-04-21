@@ -21,6 +21,14 @@ class EntriesController < ApplicationController
   def edit
   end
 
+  def upvote
+    @rating +=1
+  end
+
+  def downvote
+    @rating -=1
+  end
+
   # POST /entries
   # POST /entries.json
   def create
