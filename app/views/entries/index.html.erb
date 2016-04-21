@@ -1,29 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Treddit Entries</h1>
+<h1>Listing Entries</h1>
 
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.title %></td>
-        <td><%= entry.url %></td>
-        <td><%= entry.username %></td>
-        <td><%= entry.rating %></td>
-        <td><%= link_to 'Show', entry %></td>
-        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <%= link_to upvote_path(id: entry.id) do %>
-        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to downvote_path(id: entry.id) do %>
-        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
-      <% end %>
+<div class="btn btn-info"><%= link_to 'New Entry', new_entry_path %></div>
 
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @entries.each do |entry| %>
+    <div class="col-md-12">
+      <div class="well">
+        <h2><%= entry.title %></h2>
+        <h2><%= link_to entry.url, target: "_blank" %></h2>
+        <p>
+          Rating: <%= entry.rating %>
+          <%= link_to upvote_path(id: entry.id) do %>
+          Upvote <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+          <% end %>
+            Downvote <%= link_to downvote_path(id: entry.id) do %>
+            <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+          <% end %>
+      </p>
+        <p><%= link_to 'Show ', entry %><%= link_to 'Edit ', edit_entry_path(entry) %><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<br>
 
-<%= link_to 'New Entry', new_entry_path %>
