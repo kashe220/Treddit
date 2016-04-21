@@ -15,8 +15,8 @@
           <%= link_to upvote_path(id: entry.id) do %>
           Upvote <i class="fa fa-thumbs-up" aria-hidden="true"></i>
           <% end %>
-            Downvote <%= link_to downvote_path(id: entry.id) do %>
-            <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+            <%= link_to downvote_path(id: entry.id) do %>
+             Downvote <i class="fa fa-thumbs-down" aria-hidden="true"></i>
           <% end %>
       </p>
         <p><%= link_to 'Show ', entry %><%= link_to 'Edit ', edit_entry_path(entry) %><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></p>
