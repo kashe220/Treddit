@@ -21,6 +21,22 @@ class EntriesController < ApplicationController
   def edit
   end
 
+   def upvote
+    @entry = Entry.find(params[:id])
+    @entry.rating += 1
+    @entry.save
+    redirect_to root_path
+  end
+
+  def downvote
+    @entry = Entry.find(params[:id])
+    @entry.rating -=1
+    @entry.save
+    redirect_to root_path
+  end
+
+
+
   # POST /entries
   # POST /entries.json
   def create

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :entries
   root 'entries#index'
+
+  get 'upvote' => 'entries#upvote'
+  get 'downvote' => 'entries#downvote'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
