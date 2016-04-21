@@ -22,11 +22,17 @@ class EntriesController < ApplicationController
   end
 
   def upvote
-    @rating +=1
+    @entry = Entry.find(params[:id])
+    @entry.rating += 1
+    @entry.save
+    redirect_to root_path
   end
 
   def downvote
-    @rating -=1
+    @entry = Entry.find(params[:id])
+    @entry.rating -=1
+    @entry.save
+    redirect_to root_path
   end
 
   # POST /entries

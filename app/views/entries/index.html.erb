@@ -13,15 +13,17 @@
         <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
         <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <%= link_to upvote_path(id: entry.id) do %>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to downvote_path(id: entry.id) do %>
+        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+      <% end %>
+
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to "Upvote", @upvote do %>
-<i class="fa fa-thumbs-up" aria-hidden="true"></i>
-<% end %>
-<i class="fa fa-thumbs-down" aria-hidden="true"></i>
 
 <%= link_to 'New Entry', new_entry_path %>
